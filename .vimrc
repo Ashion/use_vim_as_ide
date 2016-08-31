@@ -107,7 +107,7 @@ Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'suan/vim-instant-markdown'
-Plugin 'lilydjwg/fcitx.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " 插件列表结束
 call vundle#end()
@@ -158,6 +158,7 @@ set ruler
 
 " 开启行号显示
 set number
+set backspace=2
 
 " 高亮显示当前行/列
 set cursorline
@@ -401,14 +402,16 @@ let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 
 " YCM 补全菜单配色
 " 菜单
-highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
+"highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8f5
 " 选中项
-highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+"highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
 
 " 补全功能在注释中同样有效
 let g:ycm_complete_in_comments=1
 
 " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
+let g:ycm_confirm_extra_conf=0
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py' 
 let g:ycm_confirm_extra_conf=0
 
 " 开启 YCM 标签补全引擎
@@ -478,8 +481,8 @@ let NERDTreeAutoDeleteBuffer=1
 map <Leader>bl :MBEToggle<cr>
 
 " buffer 切换快捷键
-map <C-Tab> :MBEbn<cr>
-map <C-S-Tab> :MBEbp<cr>
+map <Leader>nb :MBEbn<cr>
+map <Leader>pb :MBEbp<cr>
 
 " <<
 
@@ -522,4 +525,19 @@ let g:wildfire_objects = ["i'", 'i"', "i)", "i]", "i}", "i>", "ip"]
 
 " 调用 gundo 树
 nnoremap <Leader>ud :GundoToggle<CR>
+
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+map <leader>f :CtrlPMRU<CR>
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+    \ }
+let g:ctrlp_working_path_mode=0
+let g:ctrlp_match_window_bottom=1
+let g:ctrlp_max_height=15
+let g:ctrlp_match_window_reversed=0
+let g:ctrlp_mruf_max=500
+let g:ctrlp_follow_symlinks=1
+
 
